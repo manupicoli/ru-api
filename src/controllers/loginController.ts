@@ -39,6 +39,11 @@ export class LoginController {
             //     const token = jwt.sign({ id: user.id } , "your_jwt_secret", {expiresIn: "1h"} );
             //     res.status(200).json({ message: "User logged in", token, user});
 
+            if(user.role == UserRole.Admin) {
+                const token = jwt.sign({ id: user.id } , "your_jwt_secret", {expiresIn: "1h"} );
+                res.status(200).json({ message: "User logged in", token, user});
+            };
+
             if(email == "aluno@teste.com" && password == "teste"){
                 const token = jwt.sign({ id: user.id } , "your_jwt_secret", {expiresIn: "1h"} );
                 res.status(200).json({ message: "User logged in", token, user});
